@@ -1,0 +1,17 @@
+# 1. Choose a starting point (the base image)
+FROM node:18-alpine
+
+# 2. Set the "home" folder for your app inside the container
+WORKDIR /app
+
+# 3. Copy your project files from your computer into the container
+COPY . .
+
+# 4. Install dependencies (runs during the "build" phase)
+RUN npm install
+
+# 5. Tell the container which port to listen on
+EXPOSE 3000
+
+# 6. The command to run your app (runs when the container starts)
+CMD ["node", "app.js"]
